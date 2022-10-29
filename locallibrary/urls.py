@@ -30,3 +30,4 @@ urlpatterns += [
 ]
 
 # Use static() to add URL mappings to serve static files during development only
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
