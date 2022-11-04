@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Book, BookInstance, Author, Genre
 from django.views import generic
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -48,3 +49,26 @@ class BookListView(generic.ListView):
 class BookDetailView(generic.DetailView):
     """BookDetailView class"""
     model = Book
+
+
+class AuthorListView(generic.ListView):
+    """Author"""
+    model = Author
+    paginate_by = 2
+
+
+class AuthorDetailView(generic.DetailView):
+    """AuthorDetailView class"""
+    model = Author
+
+
+# def authors(request):
+#     """author view"""
+#     authors = Author.objects.all()
+#     paginator = Paginator(authors, 2)  # show 5 authors per page.
+#     page_number = request.GET.get('page')
+#     page_obj = paginator.get_page(page_number)
+
+#     context = {'page_obj': page_obj}
+
+#     return render(request, 'catalog/author_list.html', context=context)
