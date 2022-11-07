@@ -41,7 +41,7 @@ class BookAdmin(admin.ModelAdmin):
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
     """BookInstanceAdmin"""
-    list_display = ('book_info', 'due_back', 'status', 'id')
+    list_display = ('book_info', 'due_back', 'borrower', 'status', 'id')
     list_filter = ('status', 'due_back')
 
     fieldsets = (
@@ -49,7 +49,7 @@ class BookInstanceAdmin(admin.ModelAdmin):
             'fields': ('book', 'imprint', 'id')
         }),
         ('Availability', {
-            'fields': ('status', 'due_back')
+            'fields': ('status', 'due_back', 'borrower')
         }),
     )
 
