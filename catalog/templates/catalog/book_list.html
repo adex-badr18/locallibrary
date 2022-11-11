@@ -3,10 +3,12 @@
 {% block content %}
 <h1>Book List</h1>
 {% if book_list %}
+<a href="{% url 'book-create' %}">Add Book</a>
 <ul>
     {% for book in book_list %}
     <li>
         <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
+        - <a href="{% url 'book-update' book.pk %}">Edit</a> - <a href="{% url 'book-delete' book.pk %}">Delete</a>
     </li>
     {% endfor %}
 </ul>
