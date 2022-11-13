@@ -284,3 +284,14 @@ class RenewBookInstancesViewTest(TestCase):
 
         # Check we used correct template
         self.assertTemplateUsed(response, 'catalog/book_renew_librarian.html')
+
+    def test_form_renewal_date_initially_has_date_three_weeks_in_future(self):
+        login = self.client.login(
+            username='testuser2', password='2HJ1vRV0Z&3iD')
+        response = self.client.get(
+            reverse('renew-book-librarian', kwargs={'pk': self.test_bookinstance1.pk}))
+        self.assertEqual(response.status_code, 200)
+
+        date_3_weeks_in_future = datetime.date.today() + datetime.timedelta(weeks=3)
+        self.assertEqual(
+            response.context['form'].initial['renewal_date'], date_3_weeks_in_future)
