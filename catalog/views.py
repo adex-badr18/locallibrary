@@ -133,7 +133,7 @@ class AuthorCreate(PermissionRequiredMixin, CreateView):
     permission_required = 'catalog.can_mark_returned'
     model = Author
     fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
-    initial = {'date_of_death': '11/06/2020'}
+    initial = {'date_of_death': str(datetime.date(2020, 6, 11))}
 
 
 class AuthorUpdate(PermissionRequiredMixin, UpdateView):
