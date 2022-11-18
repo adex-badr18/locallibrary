@@ -80,7 +80,7 @@
                     <div class="course-item flex-fill">
                         <img src="{% static '/assets/img/book-cover2.png' %}" class="img-fluid" alt="...">
                         <div class="course-content">
-                            <h3><a href="#">{{ book.title }}</a></h3>
+                            <h3><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h3>
                             <p>{{ book.summary }}</p>
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4>{{ book.genre.all|join:", " }}</h4>
@@ -110,7 +110,7 @@
 <!-- End Content -->
 
 <!-- Start Old Template -->
-{% block old-content %}
+<!-- {% block old-content %}
 <h1>Local Library Home</h1>
 <p>Welcome to LocalLibrary, a website developed by <em>Mozilla Developer Network</em>!</p>
 <h2>Dynamic content</h2>
@@ -125,5 +125,5 @@
 </ul>
 
 <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
-{% endblock %}
+{% endblock %} -->
 <!-- End Old Template -->
