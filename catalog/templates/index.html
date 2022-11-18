@@ -1,7 +1,171 @@
 {% extends "base_generic.html" %}
 
 {% block title %}<title>Index</title>{% endblock %}
+
+<!-- Start Hero section -->
+{% block hero %}
+<section id="hero" class="d-flex justify-content-center align-items-center">
+    <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+        <h1>Learning Today,<br>Leading Tomorrow</h1>
+        <h2>We are loaded with books that can enhance your learning experience with great authors.</h2>
+        <a href="{% url 'books' %}" class="btn-get-started">Get Started</a>
+    </div>
+</section>
+{% endblock %}
+<!-- End Hero section -->
+
+<!-- Start Content -->
 {% block content %}
+<main id="main">
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts section-bg">
+        <div class="container">
+
+            <div class="row counters">
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="{{ num_books }}"
+                        data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Books</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="{{ num_instances_available }}"
+                        data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Available Books</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="{{ num_authors }}"
+                        data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Authors</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="{{ num_genres }}"
+                        data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Genres</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="{{ book_filter }}"
+                        data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Books with "war"</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="{{ num_visits }}"
+                        data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Your Visit{{ num_visits|pluralize }}</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Popular Courses Section ======= -->
+    <section id="popular-courses" class="courses">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-title">
+                <h2>Books</h2>
+                <p>Popular Books</p>
+            </div>
+
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="course-item">
+                        <!-- <img src="assets/img/course-1.jpg" class="img-fluid" alt="..."> -->
+                        <div class="course-content">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4>Comma-separated genres</h4>
+                                <!-- <p class="price">$169</p> -->
+                            </div>
+
+                            <h3><a href="#">Book Title</a></h3>
+                            <p>Short description or short summary of the book. It should be descriptive of the contents
+                                of the book in question.</p>
+                            <div class="trainer d-flex justify-content-between align-items-center">
+                                <div class="trainer-profile d-flex align-items-center">
+                                    <img src="#" class="img-fluid" alt="">
+                                    <span>Author Name</span>
+                                </div>
+                                <div class="trainer-rank d-flex align-items-center">
+                                    <i class="bx bx-book"></i>&nbsp;50
+                                    &nbsp;&nbsp;
+                                    <i class="bx bx-like"></i>&nbsp;65
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Course Item-->
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="course-item">
+                        <!-- <img src="assets/img/course-1.jpg" class="img-fluid" alt="..."> -->
+                        <div class="course-content">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4>Comma-separated genres</h4>
+                                <!-- <p class="price">$169</p> -->
+                            </div>
+
+                            <h3><a href="#">Book Title</a></h3>
+                            <p>Short description or short summary of the book. It should be descriptive of the contents
+                                of the book in question.</p>
+                            <div class="trainer d-flex justify-content-between align-items-center">
+                                <div class="trainer-profile d-flex align-items-center">
+                                    <img src="#" class="img-fluid" alt="">
+                                    <span>Author Name</span>
+                                </div>
+                                <div class="trainer-rank d-flex align-items-center">
+                                    <i class="bx bx-book"></i>&nbsp;50
+                                    &nbsp;&nbsp;
+                                    <i class="bx bx-like"></i>&nbsp;65
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Course Item-->
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="course-item">
+                        <!-- <img src="assets/img/course-1.jpg" class="img-fluid" alt="..."> -->
+                        <div class="course-content">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4>Comma-separated genres</h4>
+                                <!-- <p class="price">$169</p> -->
+                            </div>
+
+                            <h3><a href="#">Book Title</a></h3>
+                            <p>Short description or short summary of the book. It should be descriptive of the contents
+                                of the book in question.</p>
+                            <div class="trainer d-flex justify-content-between align-items-center">
+                                <div class="trainer-profile d-flex align-items-center">
+                                    <img src="#" class="img-fluid" alt="">
+                                    <span>Author Name</span>
+                                </div>
+                                <div class="trainer-rank d-flex align-items-center">
+                                    <i class="bx bx-book"></i>&nbsp;50
+                                    &nbsp;&nbsp;
+                                    <i class="bx bx-like"></i>&nbsp;65
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End Course Item-->
+
+            </div>
+
+        </div>
+    </section><!-- End Popular Courses Section -->
+</main>
+{% endblock %}
+<!-- End Content -->
+
+<!-- Start Old Template -->
+{% block old-content %}
 <h1>Local Library Home</h1>
 <p>Welcome to LocalLibrary, a website developed by <em>Mozilla Developer Network</em>!</p>
 <h2>Dynamic content</h2>
@@ -17,3 +181,4 @@
 
 <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
 {% endblock %}
+<!-- End Old Template -->
