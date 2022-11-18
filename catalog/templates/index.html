@@ -1,4 +1,5 @@
 {% extends "base_generic.html" %}
+{% load static %}
 
 {% block title %}<title>Index</title>{% endblock %}
 
@@ -26,31 +27,31 @@
                 <div class="col-lg-4 col-6 text-center">
                     <span data-purecounter-start="0" data-purecounter-end="{{ num_books }}"
                         data-purecounter-duration="1" class="purecounter"></span>
-                    <p>Books</p>
+                    <p>Book{{ num_books|pluralize }}</p>
                 </div>
 
                 <div class="col-lg-4 col-6 text-center">
                     <span data-purecounter-start="0" data-purecounter-end="{{ num_instances_available }}"
                         data-purecounter-duration="1" class="purecounter"></span>
-                    <p>Available Books</p>
+                    <p>Available Book{{ num_instances_available|pluralize }}</p>
                 </div>
 
                 <div class="col-lg-4 col-6 text-center">
                     <span data-purecounter-start="0" data-purecounter-end="{{ num_authors }}"
                         data-purecounter-duration="1" class="purecounter"></span>
-                    <p>Authors</p>
+                    <p>Author{{ num_authors|pluralize }}</p>
                 </div>
 
                 <div class="col-lg-4 col-6 text-center">
                     <span data-purecounter-start="0" data-purecounter-end="{{ num_genres }}"
                         data-purecounter-duration="1" class="purecounter"></span>
-                    <p>Genres</p>
+                    <p>Genre{{ num_genres|pluralize }}</p>
                 </div>
 
                 <div class="col-lg-4 col-6 text-center">
                     <span data-purecounter-start="0" data-purecounter-end="{{ book_filter }}"
                         data-purecounter-duration="1" class="purecounter"></span>
-                    <p>Books with "war"</p>
+                    <p>Book{{ book_filter|pluralize }} with "war"</p>
                 </div>
 
                 <div class="col-lg-4 col-6 text-center">
@@ -74,22 +75,21 @@
             </div>
 
             <div class="row" data-aos="zoom-in" data-aos-delay="100">
-
+                {% for book in recent_books %}
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                    <div class="course-item">
-                        <!-- <img src="#" class="img-fluid" alt="..."> -->
+                    <div class="course-item flex-fill">
+                        <img src="{% static '/assets/img/book-cover2.png' %}" class="img-fluid" alt="...">
                         <div class="course-content">
-                            <h3><a href="#">Book Title</a></h3>
-                            <p>Short description or short summary of the book. It should be descriptive of the contents
-                                of the book in question.</p>
+                            <h3><a href="#">{{ book.title }}</a></h3>
+                            <p>{{ book.summary }}</p>
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4>Comma-separated genres</h4>
+                                <h4>{{ book.genre.all|join:", " }}</h4>
                                 <p class="price"></p>
                             </div>
                             <div class="trainer d-flex justify-content-between align-items-center">
                                 <div class="trainer-profile d-flex align-items-center">
                                     <img src="#" class="img-fluid" alt="">
-                                    <span>Author Name</span>
+                                    <span><a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></span>
                                 </div>
                                 <div class="trainer-rank d-flex align-items-center">
                                     <i class="bx bx-book"></i>&nbsp;50
@@ -100,59 +100,7 @@
                         </div>
                     </div>
                 </div> <!-- End Course Item-->
-
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                    <div class="course-item">
-                        <!-- <img src="#" class="img-fluid" alt="..."> -->
-                        <div class="course-content">
-                            <h3><a href="#">Book Title</a></h3>
-                            <p>Short description or short summary of the book. It should be descriptive of the contents
-                                of the book in question.</p>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4>Comma-separated genres</h4>
-                                <p class="price"></p>
-                            </div>
-                            <div class="trainer d-flex justify-content-between align-items-center">
-                                <div class="trainer-profile d-flex align-items-center">
-                                    <img src="#" class="img-fluid" alt="">
-                                    <span>Author Name</span>
-                                </div>
-                                <div class="trainer-rank d-flex align-items-center">
-                                    <i class="bx bx-book"></i>&nbsp;50
-                                    &nbsp;&nbsp;
-                                    <i class="bx bx-like"></i>&nbsp;65
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- End Course Item-->
-
-                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                    <div class="course-item">
-                        <!-- <img src="#" class="img-fluid" alt="..."> -->
-                        <div class="course-content">
-                            <h3><a href="#">Book Title</a></h3>
-                            <p>Short description or short summary of the book. It should be descriptive of the contents
-                                of the book in question.</p>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4>Comma-separated genres</h4>
-                                <p class="price"></p>
-                            </div>
-                            <div class="trainer d-flex justify-content-between align-items-center">
-                                <div class="trainer-profile d-flex align-items-center">
-                                    <img src="#" class="img-fluid" alt="">
-                                    <span>Author Name</span>
-                                </div>
-                                <div class="trainer-rank d-flex align-items-center">
-                                    <i class="bx bx-book"></i>&nbsp;50
-                                    &nbsp;&nbsp;
-                                    <i class="bx bx-like"></i>&nbsp;65
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- End Course Item-->
-
+                {% endfor %}
             </div>
 
         </div>

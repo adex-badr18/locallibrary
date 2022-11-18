@@ -16,6 +16,9 @@ from catalog.forms import RenewBookForm
 def index(request):
     """View function for home page of site."""
 
+    # Generate a list of three books
+    recent_books = Book.objects.all()[:3]
+
     # Generate counts of some of the main objects
     num_books = Book.objects.all().count()
     num_instances = BookInstance.objects.all().count()
@@ -46,6 +49,7 @@ def index(request):
         'num_genres': num_genres,
         'book_filter': book_filter,
         'num_visits': num_visits,
+        'recent_books': recent_books,
     }
 
     # Render the HTML template index.html with the data in the context variable
