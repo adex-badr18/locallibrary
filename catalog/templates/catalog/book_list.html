@@ -22,7 +22,7 @@
                 {% for book in book_list %}
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                     <div class="course-item flex-fill mb-4">
-                        <img src="{% static '/assets/img/book-cover2.png' %}" class="img-fluid" alt="...">
+                        <img src="{{ book.book_cover_image.url }}" class="img-fluid" alt="...">
                         <div class="course-content">
                             <h3><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h3>
                             <p>{{ book.summary|truncatechars:120 }}</p>
