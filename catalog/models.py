@@ -23,8 +23,12 @@ class Author(models.Model):
     """Model representing an author."""
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    summary = models.TextField(
+        max_length=1000, help_text="Enter a brief summary of the author", null=True)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('died', null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    updated = models.DateTimeField(auto_now=True, null=True)
 
     class Meta:
         ordering = ['last_name', 'first_name']
@@ -66,6 +70,12 @@ class Book(models.Model):
         Genre, help_text='Select a genre for this book')
     language = models.ForeignKey(
         Language, on_delete=models.SET_NULL, null=True)
+    book_cover_image = models.ImageField(
+        upload_to='book_cover_images/', null=True, default='/assets/img/book-cover2.png')
+    book_content_image = models.ImageField(
+        upload_to='book_content_images/', null=True, default='/assets/img/book-content.jpg')
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    updated = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         """String for representing the book object"""
@@ -106,6 +116,8 @@ class BookInstance(models.Model):
         default='m',
         help_text='Book availability',
     )
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    updated = models.DateTimeField(auto_now=True, null=True)
 
     class Meta:
         ordering = ['due_back']
