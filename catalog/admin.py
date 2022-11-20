@@ -20,8 +20,9 @@ class AuthorAdmin(admin.ModelAdmin):
     """AuthorAdmin"""
     list_display = ('last_name', 'first_name',
                     'date_of_birth', 'date_of_death')
-    fields = ['first_name', 'last_name', 'summary',
-              ('date_of_birth', 'date_of_death')]
+    # fields = ['first_name', 'last_name', 'summary',
+    #           ('date_of_birth', 'date_of_death'), 'created', 'updated']
+    exclude = ['created', 'updated', ]
 
     inlines = [BookInline]
 
@@ -35,19 +36,21 @@ class BookInstanceInline(admin.TabularInline):
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
     """BookAdmin"""
-    list_display = ('title', 'author', 'display_genre', 'book_cover_image')
+    list_display = ('id', 'title', 'author', 'display_genre',
+                    'created', 'book_cover_image')
     inlines = [BookInstanceInline]
 
 
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
     """BookInstanceAdmin"""
-    list_display = ('book_info', 'due_back', 'borrower', 'status', 'id')
+    list_display = ('book_info', 'due_back', 'borrower',
+                    'status', 'copy_summary', 'id')
     list_filter = ('status', 'due_back')
 
     fieldsets = (
         (None, {
-            'fields': ('book', 'imprint', 'id')
+            'fields': ('book', 'imprint', 'copy_summary', 'id')
         }),
         ('Availability', {
             'fields': ('status', 'due_back', 'borrower')
