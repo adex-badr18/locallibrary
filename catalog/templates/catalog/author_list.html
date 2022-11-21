@@ -1,6 +1,62 @@
 {% extends "base_generic.html" %}
 
+{% block title %}<title>Authors</title>{% endblock %}
+
 {% block content %}
+<main id="main" data-aos="fade-in">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div id="obj-list" class="container">
+            <h2>Authors</h2>
+            <p>Ours books are written by highly experienced authors.</p>
+            <a href="{% url 'book-create' %}" class="btn-get-started"><i class="bx bx-plus"></i> Add Author</a>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Authors Section ======= -->
+    <section id="trainers" class="trainers">
+        <div class="container" data-aos="fade-up">
+            {% if author_list %}
+            <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                {% for author in author_list %}
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <!-- <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt=""> -->
+                        <div class="member-content mt-3">
+                            <h4><a href="{{ author.get_absolute_url }}">
+                                    {{ author.first_name }} {{ author.last_name }}
+                                </a></h4>
+                            <!-- <span>Web Development</span> -->
+                            <p>{{ author.summary|truncatechars:120 }}</p>
+                            {% if user.is_staff %}
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <small><a href="{% url 'author-update' author.pk %}">
+                                        <i class="bx bxs-edit"></i> Edit Author</a></small>
+                                <small><a class="text-danger" href="{% url 'author-delete' author.pk %}">
+                                        <i class="bx bx-x-circle"></i> Delete Author</a></small>
+                            </div>
+                            {% endif %}
+                            <hr>
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                                <a href=""><i class="bi bi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+        </div>
+    </section><!-- End Trainers Section -->
+
+</main><!-- End #main -->
+{% endblock %}
+
+<!-- {% block old-content %}
 <h1>Author List</h1>
 {% if author_list %}
 <a href="{% url 'author-create' %}">Create Author</a>
@@ -16,4 +72,4 @@
 {% else %}
 <p>There are no authors in the library.</p>
 {% endif %}
-{% endblock %}
+{% endblock %} -->

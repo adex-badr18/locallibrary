@@ -7,7 +7,7 @@
 <main id="main" data-aos="fade-in">
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-        <div class="container">
+        <div id="obj-list" class="container">
             <h2>Books</h2>
             <p>Our books are written by highly experienced authors, they include books of various genres written in
                 different languages. </p>
@@ -18,6 +18,7 @@
     <!-- =========== Books Section ============== -->
     <section id="courses" class="courses">
         <div class="container" data-aos="fade-up">
+            {% if book_list %}
             <div class="row" data-aos="zoom-in" data-aos-delay="100">
                 {% for book in book_list %}
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
@@ -30,12 +31,14 @@
                                 <h4>{{ book.genre.all|join:", " }}</h4>
                                 <p class="price"></p>
                             </div>
+                            {% if user.is_staff %}
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <small><a href="{% url 'book-update' book.pk %}"><i class="bx bxs-edit"></i> Edit
                                         Book</a></small>
                                 <small><a class="text-danger" href="{% url 'book-delete' book.pk %}"><i
                                             class="bx bx-x-circle"></i> Delete Book</a></small>
                             </div>
+                            {% endif %}
                             <div class="trainer d-flex justify-content-between align-items-center">
                                 <div class="trainer-profile d-flex align-items-center">
                                     <img src="#" class="img-fluid" alt="">
@@ -52,6 +55,7 @@
                 </div> <!-- End Course Item-->
                 {% endfor %}
             </div>
+            {% endif %}
         </div>
     </section>
 </main>

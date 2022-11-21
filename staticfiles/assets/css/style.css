@@ -812,6 +812,25 @@ section {
 /*--------------------------------------------------------------
 # Trainers
 --------------------------------------------------------------*/
+#obj-list .btn-get-started {
+  font-family: "Raleway", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 35px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin-top: 30px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+#obj-list .btn-get-started:hover {
+  background: #077026;
+  border: 2px solid #073f18;
+}
+
 .trainers .member {
   text-align: center;
   margin-bottom: 20px;

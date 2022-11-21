@@ -64,10 +64,12 @@
     <!-- ======= Book Details Tabs Section ======= -->
     <section id="cource-details-tabs" class="cource-details-tabs">
         <div class="container" data-aos="fade-up">
-            <div class="text-center mb-3">
+            {% if book.bookinstance_set %}
+            <div class="text-center mb-4">
                 <h3>Book Copies</h3>
                 <hr>
             </div>
+            {% endif %}
             <div class="row">
                 {% for copy in book.bookinstance_set.all %}
                 <div class="col-lg-3">
