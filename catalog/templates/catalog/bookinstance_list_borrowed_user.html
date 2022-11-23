@@ -1,6 +1,54 @@
 {% extends "base_generic.html" %}
 
+{% block title %}<title>My borrowed books</title>{% endblock %}
+
 {% block content %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+        <div class="container">
+            <h2>
+                My Borrowed Books - <span data-purecounter-start="0"
+                    data-purecounter-end="{{ bookinstance_list|length}}" data-purecounter-duration="1"
+                    class="purecounter"></span>
+            </h2>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+    <section id="courses" class="courses">
+        <div class="container" data-aos="fade-in">
+            {% if bookinstance_list %}
+            <table class="table table-hover table-responsive-sm">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Book Title</th>
+                        <th scope="col">Imprint</th>
+                        <th scope="col">Return Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bookinst in bookinstance_list %}
+                    <tr class="{% if bookinst.is_overdue %}bg-danger text-white{% endif %}">
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><a class="text-primary {% if bookinst.is_overdue %}text-white{% endif %}"
+                                href="{% url 'book-detail' bookinst.book.pk %}">
+                                {{ bookinst.book.title }}</a></td>
+                        <td>{{ bookinst.imprint }}</td>
+                        <td>{{ bookinst.due_back }}{% if bookinst.is_overdue %} - Overdue{% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>There are no borrowed books.</p>
+            {% endif %}
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+<!-- {% block old-content %}
 <h1>My borrowed books</h1>
 
 {% if bookinstance_list %}
@@ -18,4 +66,4 @@
 {% else %}
 <p>There are no books borrowed.</p>
 {% endif %}
-{% endblock %}
+{% endblock %} -->

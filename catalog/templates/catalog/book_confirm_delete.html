@@ -1,6 +1,34 @@
 {% extends "base_generic.html" %}
 
+{% block title %}<title>Delete Book</title>{% endblock %}
+
 {% block content %}
+<main id="main">
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+        <div class="container">
+            <h2>
+                Delete Book
+            </h2>
+        </div>
+    </div><!-- End Breadcrumbs -->
+
+    <section id="contact" class="contact">
+        <div class="container mt-5" data-aos="fade-in">
+            <h5 class="">Are you sure you want to delete the book: {{ book }}?</h5>
+            <form action="" method="POST" class="delete-form">
+                {% csrf_token %}
+                <div class="text-center">
+                    <button class=" bg-danger text-white" type="submit">Yes, delete.</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+{% endblock %}
+
+
+{% block old-content %}
 
 <h1>Delete Book</h1>
 
